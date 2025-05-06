@@ -1,1 +1,0 @@
-data/uniprot_sprot.fasta filter=lfs diff=lfs merge=lfs -text
