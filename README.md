@@ -63,10 +63,12 @@ At the optimal threshold of **1e-05**, both sets showed high predictive power:
 
 ### Performance at Multiple Thresholds
 
-The following plot shows the Matthews Correlation Coefficient (MCC) across different E-value thresholds for both test sets. Performance was optimal (MCC = 1.0) at thresholds between **1e-10** and **1e-08**, and remained high even at relaxed cutoffs.
-
-![MCC vs Threshold](results/mcc_vs_threshold.png)
+The Matthews Correlation Coefficient (MCC) remained optimal (MCC = 1.0) for thresholds between **1e-10** and **1e-08**, and above 0.986 for all other tested values, confirming the robustness of the model even under relaxed cutoffs.
 
 ### Additional Files
 
-All performance data and the plot are available in the [`results/`](results/) folder
+All performance data and the plot are available in the [`results/`](results/) folder:
+
+- [`performance_set1_thresholds.txt`](results/performance_set1_thresholds.txt)
+- [`performance_set2_thresholds.txt`](results/performance_set2_thresholds.txt)
+- [`MCC_vs_thresholds.py`](results/MCC_vs_thresholds.py)
