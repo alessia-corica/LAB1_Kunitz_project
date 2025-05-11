@@ -8,30 +8,24 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
 
 ## Required Tools & Packages
 
+To reproduce this project, the following software and dependencies are required.
+
 ### System tools
 
 The following command-line tools are required to run the pipeline:
 
 - `cd-hit`: for clustering redundant sequences
-- [`BLAST+`](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download): for sequence similarity searches (`makeblastdb`, `blastp`)
-- [`HMMER`](http://hmmer.org): for HMM construction and scanning (`hmmbuild`, `hmmsearch`)
-- `awk`, `grep`, `sort`, `head`, `tail`, `tr`: basic Unix text processing utilities
+- `BLAST+`: for sequence similarity searches (`makeblastdb`, `blastp`)
+- `HMMER`: for HMM construction and scanning (`hmmbuild`, `hmmsearch`)
 
 ### Python 3 packages
 
-You will need Python 3 and the following packages:
+Python was used for sequence filtering, dataset generation, and performance analysis.
 
+Required Python packages:
 - `pandas`: for parsing `.class` files
 - `matplotlib`: for plotting performance metrics
 - `argparse`: used in `performance.py` scripts
-- `numpy` *(optional but common)*
-
-Install them via pip if needed:
-
-```bash
-pip install pandas matplotlib numpy
-
-
 
 ## Methodology
 
