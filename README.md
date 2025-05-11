@@ -43,3 +43,32 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
   - **F1-score**
 
 The structural HMM model achieved a mean MCC of **0.995776**, indicating high robustness and generalization capacity.
+
+## Results
+
+The structural profile HMM was evaluated through a custom pipeline based on two balanced test sets, each composed of 183 positive and ~286,000 negative sequences. Performance was assessed using different E-value thresholds, and metrics such as **Accuracy**, **Recall**, **Precision**, and **Matthews Correlation Coefficient (MCC)** were computed using a dedicated Python script.
+
+### Summary of Results (Set 1 and Set 2)
+
+At the optimal threshold of **1e-05**, both sets showed high predictive power:
+
+| Metric     | Set 1     | Set 2     |
+|------------|-----------|-----------|
+| Accuracy   | 0.99998   | 0.99998   |
+| Recall     | 0.9836    | 0.9836    |
+| Precision  | 1.0000    | 1.0000    |
+| MCC        | 0.9918    | 0.9918    |
+| FP         | 0         | 0         |
+| FN         | 3         | 3         |
+
+### Performance at Multiple Thresholds
+
+Performance remained optimal (MCC = 1.0, no false negatives) at thresholds between **1e-10** and **1e-08**, then slightly declined with higher thresholds. In both test sets, MCC remained above **0.986** even with less stringent cutoffs.
+
+### Error Analysis
+
+- The false negatives observed at higher thresholds (e.g., `FN = 3` at 1e-05) were short or divergent sequences that lacked strong domain signals in the alignment.
+- No false positives were detected in any threshold tested, showing strong model specificity.
+
+> Detailed logs are available in [`performance_set1_thresholds.txt`](performance_set1_thresholds.txt) and [`performance_set2_thresholds.txt`](performance_set2_thresholds.txt).
+
