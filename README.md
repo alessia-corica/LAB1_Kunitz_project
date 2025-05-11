@@ -43,7 +43,7 @@ The repository is organized into the following directories:
 ### Data Collection
 
 - A total of 21 Kunitz domain-containing protein structures were retrieved from the **Protein Data Bank (PDB)** using the Pfam ID `PF00014`, with filters applied for resolution (≤3Å) and sequence length (50–80 residues).
-- Metadata and sequences were exported into a CSV file available at [`rcsb_pdb_custom_report_2025...csv`](raw_data/rcsb_pdb_custom_report_2025...csv).
+- Metadata and sequences were exported into a CSV file available at [`rcsb_pdb_custom_report_20250505025420.csv`](raw_data/rcsb_pdb_custom_report_20250505025420.csv).
 - In parallel, a comprehensive set of 395 **reviewed UniProt entries** annotated with `PF00014` was downloaded and saved in [`kunitz_sequences.fasta`](raw_data/kunitz_sequences.fasta).
 
 ### Data Processing
