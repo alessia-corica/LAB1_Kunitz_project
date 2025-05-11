@@ -24,3 +24,23 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
 
 ```bash
 hmmbuild structural_model.hmm pdb_kunitz_rp.ali
+- The final model is available at [`structural_model.hmm`](hmm_model/structural_model.hmm).
+
+### Dataset Preparation
+
+- The **positive set** was derived from 395 reviewed UniProt entries containing the Kunitz domain (`PF00014`) and saved in [`kunitz_sequences.fasta`](raw_data/kunitz_sequences.fasta).
+- Positive sequences were split into:
+  - [`human_kunitz_sequences.fasta`](raw_data/human_kunitz_sequences.fasta)
+  - [`nothuman_kunitz_sequences.fasta`](raw_data/nothuman_kunitz_sequences.fasta)
+- A **BLAST search** was performed to identify overlaps with the model set:
+  - Results are saved in [`pdb_kunitz_nr_23.blast`](blast_results/pdb_kunitz_nr_23.blast)
+
+### Evaluation
+
+- Model performance was assessed using **5-fold cross-validation**, implemented in the Jupyter notebook [`script.ipynb`](script.ipynb).
+- Predictions were made with `hmmsearch`, and results were evaluated using:
+  - **Accuracy**
+  - **Matthews Correlation Coefficient (MCC)**
+  - **F1-score**
+
+The structural HMM model achieved a mean MCC of **0.995776**, indicating high robustness and generalization capacity.
