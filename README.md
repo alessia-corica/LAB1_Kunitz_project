@@ -27,6 +27,17 @@ Required Python packages:
 - `matplotlib`: for plotting performance metrics
 - `argparse`: used in `performance.py` scripts
 
+## Included Scripts
+
+All scripts used to process data and evaluate model performance are located in the [`scripts/`](scripts/) directory:
+
+| Script               | Description |
+|----------------------|-------------|
+| `get_seq.py`         | Extracts sequences from a FASTA file based on a list of UniProt IDs. Useful for building positive/negative datasets. |
+| `performance.py`     | Computes classification metrics (MCC, Accuracy, Recall, Precision) from the results of `hmmsearch`. Used to evaluate performance across different thresholds. |
+| `script.ipynb`       | Jupyter notebook summarizing the full pipeline: from input data to model training, evaluation, and plotting. |
+
+
 ## Methodology
 
 ### Data Collection
