@@ -22,7 +22,7 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
 
 ### HMM Construction
 
-``` ``` ```bash ```
+``` ``` ```bash
 hmmbuild structural_model.hmm pdb_kunitz_rp.ali ``` ``` ```
 - The final model is available at [`structural_model.hmm`](hmm_model/structural_model.hmm).
 
