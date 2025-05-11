@@ -42,7 +42,7 @@ All scripts used to process data and evaluate model performance are located in t
 
 ### Data Collection
 
-- A total of 21 Kunitz domain-containing protein structures were retrieved from the **Protein Data Bank (PDB)** using the Pfam ID `PF00014`, with filters applied for resolution (≤3Å), sequence length (50–80 residues), and absence of mutations.
+- A total of 21 Kunitz domain-containing protein structures were retrieved from the **Protein Data Bank (PDB)** using the Pfam ID `PF00014`, with filters applied for resolution (≤3Å) and sequence length (50–80 residues).
 - Metadata and sequences were exported into a CSV file available at [`rcsb_pdb_custom_report_2025...csv`](raw_data/rcsb_pdb_custom_report_2025...csv).
 - In parallel, a comprehensive set of 395 **reviewed UniProt entries** annotated with `PF00014` was downloaded and saved in [`kunitz_sequences.fasta`](raw_data/kunitz_sequences.fasta).
 
@@ -52,28 +52,25 @@ All scripts used to process data and evaluate model performance are located in t
   - Human sequences: [`human_kunitz_sequences.fasta`](raw_data/human_kunitz_sequences.fasta)
   - Non-human sequences: [`nothuman_kunitz_sequences.fasta`](raw_data/nothuman_kunitz_sequences.fasta)
 - Redundancy among the PDB sequences was removed using `cd-hit` at 90% identity, and the representative set was saved in [`pdb_kunitz_rp.fasta`](hmm_model/pdb_kunitz_rp.fasta).
-- A **BLAST search** was performed to identify overlaps between the UniProt dataset and the PDB model set. The output is available at [`pdb_kunitz_nr_23.blast`](blast_results/pdb_kunitz_nr_23.blast).
+- A **BLAST search** was performed to compare the PDB sequences used for HMM construction against all UniProt Kunitz entries. The goal was to identify and exclude highly similar sequences (≥95% identity, ≥50% coverage) from the test set. The full alignment output is available at [`pdb_kunitz_nr_23.blast`](blast_results/pdb_kunitz_nr_23.blast).
 
 ### Structural Alignment
 
-- Representative sequences were aligned structurally using **PDBeFold**.
-- The multiple alignment was cleaned and saved in Stockholm format as [`pdb_kunitz_rp.ali`](hmm_model/pdb_kunitz_rp.ali) and a formatted version is available at [`pdb_kunitz_rp_formatted.ali`](hmm_model/pdb_kunitz_rp_formatted.ali).
+- A curated set of non-redundant PDB structures containing the Kunitz domain were aligned structurally using **PDBeFold** (SE PUOI inserisci tmp_pdb...ids.txt).
+- The multiple alignment was cleaned and saved as a formatted version available at [`pdb_kunitz_rp_formatted.ali`](hmm_model/pdb_kunitz_rp_formatted.ali).
 
 ### HMM Construction
 
-- A profile HMM was built using **HMMER v3.4** with the following command:\
-``` hmmbuild structural_model.hmm pdb_kunitz_rp.ali ```
+- A profile HMM was built using **HMMER**.
 - The final model is available at [`structural_model.hmm`](hmm_model/structural_model.hmm).
 
 ### Evaluation
 
-- Model performance was assessed using **5-fold cross-validation**, implemented in the Jupyter notebook [`script.ipynb`](script.ipynb).
+- Model performance was assessed using **5-fold cross-validation** (SICURA??)
 - Predictions were made with `hmmsearch`, and results were evaluated using:
   - **Accuracy**
   - **Matthews Correlation Coefficient (MCC)**
   - **F1-score**
-
-The structural HMM model achieved a mean MCC of **0.995776**, indicating high robustness and generalization capacity.
 
 ## Results
 
