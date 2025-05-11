@@ -103,3 +103,4 @@ All performance data and the plot are available in the [`results/`](results/) fo
 - [`performance_set1_thresholds.txt`](results/performance_set1_thresholds.txt)
 - [`performance_set2_thresholds.txt`](results/performance_set2_thresholds.txt)
 - [`MCC_vs_thresholds.py`](results/MCC_vs_thresholds.py)
+- [`structural_alignment_3tgi_vs_models.png`](results/structural_alignment_3tgi_vs_models.png): Chimera-generated superimposition of the false positive structure.
