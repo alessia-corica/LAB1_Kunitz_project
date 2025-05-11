@@ -9,11 +9,19 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
 
 ## Methodology
 
-### Data Preparation
+### Data Collection
 
-- A set of 21 Kunitz domain-containing proteins was retrieved from the **Protein Data Bank (PDB)** using the Pfam ID `PF00014`, filtered by resolution (≤3Å), sequence length (50–80 aa), and absence of mutations. The metadata file is available at [`rcsb_pdb_custom_report_2025...csv`](raw_data/rcsb_pdb_custom_report_2025...csv).
-- Protein sequences were extracted from the CSV using `awk`, converted to FASTA format, and filtered to remove redundancy with `cd-hit` at 90% identity.
-- The resulting non-redundant dataset is saved in [`pdb_kunitz_rp.fasta`](hmm_model/pdb_kunitz_rp.fasta), containing representative sequences used for model building.
+- A total of 21 Kunitz domain-containing protein structures were retrieved from the **Protein Data Bank (PDB)** using the Pfam ID `PF00014`, with filters applied for resolution (≤3Å), sequence length (50–80 residues), and absence of mutations.
+- Metadata and sequences were exported into a CSV file available at [`rcsb_pdb_custom_report_2025...csv`](raw_data/rcsb_pdb_custom_report_2025...csv).
+- In parallel, a comprehensive set of 395 **reviewed UniProt entries** annotated with `PF00014` was downloaded and saved in [`kunitz_sequences.fasta`](raw_data/kunitz_sequences.fasta).
+
+### Data Processing
+
+- The UniProt-derived positive set was split into:
+  - Human sequences: [`human_kunitz_sequences.fasta`](raw_data/human_kunitz_sequences.fasta)
+  - Non-human sequences: [`nothuman_kunitz_sequences.fasta`](raw_data/nothuman_kunitz_sequences.fasta)
+- Redundancy among the PDB sequences was removed using `cd-hit` at 90% identity, and the representative set was saved in [`pdb_kunitz_rp.fasta`](hmm_model/pdb_kunitz_rp.fasta).
+- A **BLAST search** was performed to identify overlaps between the UniProt dataset and the PDB model set. The output is available at [`pdb_kunitz_nr_23.blast`](blast_results/pdb_kunitz_nr_23.blast).
 
 ### Structural Alignment
 
@@ -25,15 +33,6 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
 - A profile HMM was built using **HMMER v3.4** with the following command:\
 ``` hmmbuild structural_model.hmm pdb_kunitz_rp.ali ```
 - The final model is available at [`structural_model.hmm`](hmm_model/structural_model.hmm).
-
-### Dataset Preparation
-
-- The **positive set** was derived from 395 reviewed UniProt entries containing the Kunitz domain (`PF00014`) and saved in [`kunitz_sequences.fasta`](raw_data/kunitz_sequences.fasta).
-- Positive sequences were split into:
-  - [`human_kunitz_sequences.fasta`](raw_data/human_kunitz_sequences.fasta)
-  - [`nothuman_kunitz_sequences.fasta`](raw_data/nothuman_kunitz_sequences.fasta)
-- A **BLAST search** was performed to identify overlaps with the model set:
-  - Results are saved in [`pdb_kunitz_nr_23.blast`](blast_results/pdb_kunitz_nr_23.blast)
 
 ### Evaluation
 
