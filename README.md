@@ -27,15 +27,15 @@ Required Python packages:
 - `matplotlib`: for plotting performance metrics
 - `argparse`: used in `performance.py` scripts
 
-## Included Scripts
+## Repository Structure
 
-All scripts used to process data and evaluate model performance are located in the [`scripts/`](scripts/) directory:
+The repository is organized into the following directories:
 
-| Script               | Description |
-|----------------------|-------------|
-| `get_seq.py`         | Extracts sequences from a FASTA file based on a list of UniProt IDs. Useful for building positive/negative datasets. |
-| `performance.py`     | Computes classification metrics (MCC, Accuracy, Recall, Precision) from the results of `hmmsearch`. Used to evaluate performance across different thresholds. |
-| `script.ipynb`       | Jupyter notebook summarizing the full pipeline: from input data to model training, evaluation, and plotting. |
+- `raw_data/`: input sequences and metadata downloaded from UniProt and PDB (FASTA and CSV files).
+- `hmm_model/`: files used for and generated during the construction of the HMM (e.g., alignments, profile).
+- `blast_results/`: output from BLAST used to filter sequences based on similarity to training data.
+- `results/`: performance evaluation files, plots (e.g., MCC vs threshold), and structural analysis images.
+- `scripts/`: Python scripts used for sequence filtering (`get_seq.py`), metric computation (`performance.py`), and the notebook with the full pipeline (`script.ipynb`).
 
 
 ## Methodology
