@@ -95,7 +95,7 @@ The Matthews Correlation Coefficient (MCC) remained optimal (MCC = 1.0) for thre
 
 ### Additional Files
 
-All performance data and the plot are available in the [`results/`](results/) folder:
+All performance data are available in the [`results/`](results/) folder:
 
 - [`performance_set1_thresholds.txt`](results/performance_set1_thresholds.txt)
 - [`performance_set2_thresholds.txt`](results/performance_set2_thresholds.txt)
