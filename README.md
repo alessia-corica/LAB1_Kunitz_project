@@ -63,12 +63,10 @@ At the optimal threshold of **1e-05**, both sets showed high predictive power:
 
 ### Performance at Multiple Thresholds
 
-Performance remained optimal (MCC = 1.0, no false negatives) at thresholds between **1e-10** and **1e-08**, then slightly declined with higher thresholds. In both test sets, MCC remained above **0.986** even with less stringent cutoffs.
+The following plot shows the Matthews Correlation Coefficient (MCC) across different E-value thresholds for both test sets. Performance was optimal (MCC = 1.0) at thresholds between **1e-10** and **1e-08**, and remained high even at relaxed cutoffs.
 
-### Error Analysis
+![MCC vs Threshold](results/mcc_vs_threshold.png)
 
-- The false negatives observed at higher thresholds (e.g., `FN = 3` at 1e-05) were short or divergent sequences that lacked strong domain signals in the alignment.
-- No false positives were detected in any threshold tested, showing strong model specificity.
+### Additional Files
 
-> Detailed logs are available in [`performance_set1_thresholds.txt`](performance_set1_thresholds.txt) and [`performance_set2_thresholds.txt`](performance_set2_thresholds.txt).
-
+All performance data and the plot are available in the [`results/`](results/) folder
