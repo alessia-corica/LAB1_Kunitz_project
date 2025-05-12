@@ -101,4 +101,4 @@ All performance data are available in the [`results/`](results/) folder:
 - [`performance_set2_thresholds.txt`](results/performance_set2_thresholds.txt)
 - [`MCC_vs_thresholds.py`](results/MCC_vs_thresholds.py): script to plot performance at multiple thresholds
 - [`mcc_vs_thresholds.png`](results/mcc_vs_thresholds.png): plot that describes performance at multiple thresholds
-- [`FP_superimposition.png`](results/FP_superimposition.png): Chimera-generated superimposition of the false positive structure.
+- [`FP_superimposition.png`](results/FP_superimposition.png): Chimera-generated superimposition of the false negative structure.
