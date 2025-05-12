@@ -35,7 +35,7 @@ The repository is organized into the following directories:
 - `hmm_model/`: files used for and generated during the construction of the HMM (e.g., alignments, profile).
 - `blast_results/`: output from BLAST used to filter sequences based on similarity to training data.
 - `results/`: performance evaluation files, plots (e.g., MCC vs threshold), and structural analysis images.
-- `scripts/`: Python scripts used for sequence filtering (`get_seq.py`), metric computation (`performance.py`), and the notebook with the full pipeline (`script.ipynb`).
+- `scripts/`: Python scripts used for sequence filtering (`get_seq.py`), metric computation (`performance.py`), plot performance across multiple thresholds (`MCC_vs_thresholds.py`) and the notebook with the full pipeline (`script.ipynb`).
 
 
 ## Methodology
