@@ -82,12 +82,12 @@ At the optimal threshold of **1e-05**, both sets showed high predictive power:
 
 | Metric     | Set 1     | Set 2     |
 |------------|-----------|-----------|
-| Accuracy   | 0.99998   | 0.99998   |
-| Recall     | 0.9836    | 0.9836    |
+| Accuracy   | 0.99998   | 0.99999   |
+| Recall     | 0.9836    | 0.9945    |
 | Precision  | 1.0000    | 1.0000    |
-| MCC        | 0.9918    | 0.9918    |
+| MCC        | 0.9918    | 0.9973    |
 | FP         | 0         | 0         |
-| FN         | 3         | 3         |
+| FN         | 3         | 1         |
 
 ### Performance at Multiple Thresholds
 
