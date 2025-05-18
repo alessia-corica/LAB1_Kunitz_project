@@ -29,60 +29,53 @@ Required Python packages:
 
 ## Repository Structure
 
-### `hmm_model/` – Files related to HMM construction
-- `pdb_kunitz_rp.ali`: Structural alignment of Kunitz domains generated with PDBeFold.
-- `pdb_kunitz_rp_formatted.ali`: Reformatted alignment compatible with HMMER's `hmmbuild`.
+### `hmm_model/` – Files used for building and storing the HMM profile
+- `pdb_kunitz_rp.ali`: Structural alignment of Kunitz domains obtained with PDBeFold.
+- `pdb_kunitz_rp_formatted.ali`: Alignment file reformatted for compatibility with HMMER's `hmmbuild`.
 - `structural_model.hmm`: Final profile HMM built from the formatted alignment.
 
----
 
-### `processed_data/` – Intermediate processed files
-- `pdb_kunitz_customreported.fasta`: Full set of PDB-derived Kunitz sequences.
-- `pdb_kunitz_rp.fasta`: Filtered representative sequences (non-redundant) used for alignment.
-- `tmp_pdb_efold_ids.txt`: List of PDB codes and chain IDs uploaded to PDBeFold.
+### `processed_data/` – Intermediate processed files prepared for alignment and model building
+- `pdb_kunitz_customreported.fasta`: Complete set of Kunitz domain sequences extracted from PDB entries.
+- `pdb_kunitz_rp.fasta`: Non-redundant representative sequences selected for structural alignment.
+- `tmp_pdb_efold_ids.txt`: List of PDB codes and chain IDs uploaded to PDBeFold for structural alignment.
 
----
 
-### `raw_data/` – Unprocessed raw input data
-- `human_kunitz_sequences.fasta`: Human proteins annotated with PF00014.
-- `kunitz_sequences.fasta`: All SwissProt sequences containing Kunitz domain.
-- `nothuman_kunitz_sequences.fasta`: Non-human proteins with Kunitz domain.
-- `rcsb_pdb_custom_report_*.csv`: CSV report from RCSB PDB with metadata of Kunitz domain structures.
+### `raw_data/` – Original input datasets retrieved from external databases
+- `human_kunitz_sequences.fasta`: Reviewed human protein sequences annotated with the Kunitz domain (PF00014).
+- `kunitz_sequences.fasta`: Full set of reviewed SwissProt protein sequences containing the Kunitz domain.
+- `nothuman_kunitz_sequences.fasta`: Reviewed non-human protein sequences with Kunitz domain.
+- `rcsb_pdb_custom_report_*.csv`: CSV report from RCSB PDB with metadata of Kunitz domain structures with filtered characteristics.
 
----
 
 ### `results/blast/` – Files from BLAST filtering
-- `pdb_kunitz_nr_23.blast`: BLAST output of structural sequences vs SwissProt.
-- `to_keep.ids`: IDs of non-redundant Kunitz sequences (filtered by identity and coverage).
-- `ok_kunitz.fasta`: Final positive set for classification (after redundancy removal).
+- `pdb_kunitz_nr_23.blast`: BLAST output comparing non-redundant PDB-derived sequences against the full set of Kunitz sequences from SwissProt.
+- `to_keep.ids`: IDs of non-redundant Kunitz sequences selected from BLAST output.
+- `ok_kunitz.fasta`: Final positive used for HMM evaluation.
 
----
 
-### `results/classifications/` – Classification output
+### `results/classifications/` – Results of HMM searches and data prepared for evaluation
 - `pos_1.class`, `pos_2.class`: Results of HMM search on positive sets (fold 1 and 2).
 - `neg_1.class`, `neg_2.class`: Results of HMM search on negative sets (fold 1 and 2).
 - `set_1.class`, `set_2.class`: Combined classification sets for performance evaluation.
 
----
 
 ### `results/errors/` – Misclassified sequences
 - `fn_pos1.txt`, `fn_pos2.txt`: False negatives at 1e-5 threshold from fold 1 and 2.
-- `fp_neg2.txt`: False positives from negative set 2.
+- `fp_neg2.txt`: False positives from negative set 2 (set 1 produced no false positives).
 
----
 
 ### `results/figures/confusion_matrices/`
 - `confusion_matrix_fold1.png`, `confusion_matrix_fold2.png`: Confusion matrices for each fold.
 
 ### `results/figures/superimpositions/`
-- `Superimposition_fn.png`, `Superimposition_fp.png`: Structural alignment of FN/FP vs BPTI domain.
+- `Superimposition_fn.png`, `Superimposition_fp.png`: Structural alignment of selected false negatives and false positives against the reference BPTI domain, used to visually assess similarity despite classification errors.
 
 ### `results/figures/`
 - `ROC_curve.png`: Receiver Operating Characteristic (ROC) curve.
 - `alignment_quality.png`: Quality plot of structural alignment (RMSD, residue coverage).
 - `mcc_thresholds_.png`: Plot of MCC values across E-value thresholds.
 
----
 
 ### `scripts/` – All scripts used in the pipeline
 - `script.ipynb`: Main notebook with the full workflow and explanation.
