@@ -29,76 +29,71 @@ Required Python packages:
 
 ## Repository Structure
 
-The repository is organized into the following directories:
+### `hmm_model/` – Files related to HMM construction
+- `pdb_kunitz_rp.ali`: Structural alignment of Kunitz domains generated with PDBeFold.
+- `pdb_kunitz_rp_formatted.ali`: Reformatted alignment compatible with HMMER's `hmmbuild`.
+- `structural_model.hmm`: Final profile HMM built from the formatted alignment.
 
-- `raw_data/`: input sequences and metadata downloaded from UniProt and PDB (FASTA and CSV files).
-- `hmm_model/`: files used for and generated during the construction of the HMM (e.g., alignments, profile).
-- `blast_results/`: output from BLAST used to filter sequences based on similarity to training data.
-- `results/`: performance evaluation files, plots (e.g., MCC vs threshold), and structural analysis images.
-- `scripts/`: Python scripts used for sequence filtering (`get_seq.py`), metric computation (`performance.py`), plot performance across multiple thresholds (`MCC_vs_thresholds.py`) and the notebook with the full pipeline (`script.ipynb`).
+---
 
+### `processed_data/` – Intermediate processed files
+- `pdb_kunitz_customreported.fasta`: Full set of PDB-derived Kunitz sequences.
+- `pdb_kunitz_rp.fasta`: Filtered representative sequences (non-redundant) used for alignment.
+- `tmp_pdb_efold_ids.txt`: List of PDB codes and chain IDs uploaded to PDBeFold.
 
-## Methodology
+---
 
-### Data Collection
+### `raw_data/` – Unprocessed raw input data
+- `human_kunitz_sequences.fasta`: Human proteins annotated with PF00014.
+- `kunitz_sequences.fasta`: All SwissProt sequences containing Kunitz domain.
+- `nothuman_kunitz_sequences.fasta`: Non-human proteins with Kunitz domain.
+- `rcsb_pdb_custom_report_*.csv`: CSV report from RCSB PDB with metadata of Kunitz domain structures.
 
-- A total of 21 Kunitz domain-containing protein structures were retrieved from the **Protein Data Bank (PDB)** using the Pfam ID `PF00014`, with filters applied for resolution (≤3Å) and sequence length (50–80 residues).
-- Metadata and sequences were exported into a CSV file available at [`rcsb_pdb_custom_report_20250505025420.csv`](raw_data/rcsb_pdb_custom_report_20250505025420.csv).
-- In parallel, a comprehensive set of 395 **reviewed UniProt entries** annotated with `PF00014` was downloaded and saved in [`kunitz_sequences.fasta`](raw_data/kunitz_sequences.fasta).
+---
 
-### Data Processing
+### `results/blast/` – Files from BLAST filtering
+- `pdb_kunitz_nr_23.blast`: BLAST output of structural sequences vs SwissProt.
+- `to_keep.ids`: IDs of non-redundant Kunitz sequences (filtered by identity and coverage).
+- `ok_kunitz.fasta`: Final positive set for classification (after redundancy removal).
 
-- The UniProt-derived positive set was split into:
-  - Human sequences: [`human_kunitz_sequences.fasta`](raw_data/human_kunitz_sequences.fasta)
-  - Non-human sequences: [`nothuman_kunitz_sequences.fasta`](raw_data/nothuman_kunitz_sequences.fasta)
-- Redundancy among the PDB sequences was removed using `cd-hit` at 90% identity, and the representative set was saved in [`pdb_kunitz_rp.fasta`](hmm_model/pdb_kunitz_rp.fasta).
-- A **BLAST search** was performed to compare the PDB sequences used for HMM construction against all UniProt Kunitz entries. The goal was to identify and exclude highly similar sequences (≥95% identity, ≥50% coverage) from the test set. The full alignment output is available at [`pdb_kunitz_nr_23.blast`](blast_results/pdb_kunitz_nr_23.blast).
+---
 
-### Structural Alignment
+### `results/classifications/` – Classification output
+- `pos_1.class`, `pos_2.class`: Results of HMM search on positive sets (fold 1 and 2).
+- `neg_1.class`, `neg_2.class`: Results of HMM search on negative sets (fold 1 and 2).
+- `set_1.class`, `set_2.class`: Combined classification sets for performance evaluation.
 
-- A curated set of non-redundant PDB structures containing the Kunitz domain were aligned structurally using **PDBeFold** (SE PUOI inserisci tmp_pdb...ids.txt).
-- The multiple alignment was cleaned and saved as a formatted version available at [`pdb_kunitz_rp_formatted.ali`](hmm_model/pdb_kunitz_rp_formatted.ali).
+---
 
-### HMM Construction
+### `results/errors/` – Misclassified sequences
+- `fn_pos1.txt`, `fn_pos2.txt`: False negatives at 1e-5 threshold from fold 1 and 2.
+- `fp_neg2.txt`: False positives from negative set 2.
 
-- A profile HMM was built using **HMMER**.
-- The final model is available at [`structural_model.hmm`](hmm_model/structural_model.hmm).
+---
 
-### Evaluation
+### `results/figures/confusion_matrices/`
+- `confusion_matrix_fold1.png`, `confusion_matrix_fold2.png`: Confusion matrices for each fold.
 
-- Model performance was assessed using **5-fold cross-validation** (SICURA??)
-- Predictions were made with `hmmsearch`, and results were evaluated using:
-  - **Accuracy**
-  - **Matthews Correlation Coefficient (MCC)**
-  - **F1-score**
+### `results/figures/superimpositions/`
+- `Superimposition_fn.png`, `Superimposition_fp.png`: Structural alignment of FN/FP vs BPTI domain.
 
-## Results
+### `results/figures/`
+- `ROC_curve.png`: Receiver Operating Characteristic (ROC) curve.
+- `alignment_quality.png`: Quality plot of structural alignment (RMSD, residue coverage).
+- `mcc_thresholds_.png`: Plot of MCC values across E-value thresholds.
 
-The structural profile HMM was evaluated through a custom pipeline based on two balanced test sets, each composed of 183 positive and ~286,000 negative sequences. Performance was assessed using different E-value thresholds, and metrics such as **Accuracy**, **Recall**, **Precision**, and **Matthews Correlation Coefficient (MCC)** were computed using a dedicated Python script.
+---
 
-### Summary of Results (Set 1 and Set 2)
+### `scripts/` – All scripts used in the pipeline
+- `script.ipynb`: Main notebook with the full workflow and explanation.
+- `get_seq.py`: Extracts sequences from a FASTA based on a list of UniProt IDs.
+- `performance.py`: Computes MCC, accuracy, precision, recall from `.class` files.
+- `confusion_matrix.py`: Generates confusion matrix plots from classification files.
+- `alignment_quality.py`: Evaluates structural alignment metrics.
+- `ROC_curve.py`: Generates the ROC curve.
+- `MCC_script.py`: Plots MCC across different thresholds.
 
-At the optimal threshold of **1e-05**, both sets showed high predictive power:
+---
 
-| Metric     | Set 1     | Set 2     |
-|------------|-----------|-----------|
-| Accuracy   | 0.99998   | 0.99999   |
-| Recall     | 0.9836    | 0.9945    |
-| Precision  | 1.0000    | 1.0000    |
-| MCC        | 0.9918    | 0.9973    |
-| FP         | 0         | 0         |
-| FN         | 3         | 1         |
-
-### Performance at Multiple Thresholds
-
-The Matthews Correlation Coefficient (MCC) remained optimal (MCC = 1.0) for thresholds between **1e-10** and **1e-08**, and above 0.986 for all other tested values, confirming the robustness of the model even under relaxed cutoffs.
-
-### Additional Files
-
-All performance data are available in the [`results/`](results/) folder:
-
-- [`performance_set1_thresholds.txt`](results/performance_set1_thresholds.txt)
-- [`performance_set2_thresholds.txt`](results/performance_set2_thresholds.txt)
-- [`mcc_vs_thresholds.png`](results/mcc_vs_thresholds.png): plot that describes performance at multiple thresholds
-- [`FP_superimposition.png`](results/FP_superimposition.png): Chimera-generated superimposition of the false negative structure.
-- [`results/false_negatives`](results/false_negatives)
+### `.gitattributes`
+- Configuration file for Git LFS (used to track large files like `.fasta` or `.hmm`).
