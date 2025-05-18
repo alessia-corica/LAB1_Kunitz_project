@@ -85,8 +85,3 @@ Required Python packages:
 - `alignment_quality.py`: Evaluates structural alignment metrics.
 - `ROC_curve.py`: Generates the ROC curve.
 - `MCC_script.py`: Plots MCC across different thresholds.
-
----
-
-### `.gitattributes`
-- Configuration file for Git LFS (used to track large files like `.fasta` or `.hmm`).
