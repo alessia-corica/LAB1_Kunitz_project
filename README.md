@@ -36,7 +36,7 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 - `matplotlib`, `seaborn`: For plotting results and visualizations.
 - `scikit-learn`: For computing classification performance metrics.
 
-> All dependencies are used across the performance evaluation and plotting scripts.
+> Ensure all dependencies are installed before running the analysis.
 
 ## Repository Structure
 
