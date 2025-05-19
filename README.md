@@ -25,14 +25,18 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 
 - **ChimeraX**: Used to visualize and structurally superimpose predicted false positives and false negatives againstj the BPTI reference structure (PDB ID: 3TGI).
 
-### Python 3 packages
+### Python Scripts
+- `get_seq.py`: Extracts sequences from a FASTA file based on a list of UniProt IDs.
+- `performance.py`: Computes classification metrics such as MCC, precision, recall, and accuracy from `.class` files.
+- `confusion_matrix.py`, `ROC_curve.py`, `alignment_quality.py`: Generate evaluation plots for model performance and alignment quality.
+- `script.ipynb`: A comprehensive Jupyter notebook that documents the full pipeline step by step.
 
-Python was used for sequence filtering, dataset generation, and performance analysis.
+### Python Dependencies
+- `pandas`, `numpy`: For handling tabular data and numerical computations.
+- `matplotlib`, `seaborn`: For plotting results and visualizations.
+- `scikit-learn`: For computing classification performance metrics.
 
-Required Python packages:
-- `pandas`: for parsing `.class` files
-- `matplotlib`: for plotting performance metrics
-- `argparse`: used in `performance.py` scripts
+> All dependencies are used across the performance evaluation and plotting scripts.
 
 ## Repository Structure
 
@@ -40,7 +44,6 @@ Required Python packages:
 - `pdb_kunitz_rp.ali`: Structural alignment of Kunitz domains obtained with PDBeFold.
 - `pdb_kunitz_rp_formatted.ali`: Alignment file reformatted for compatibility with HMMER's `hmmbuild`.
 - `structural_model.hmm`: Final profile HMM built from the formatted alignment.
-
 
 ### `processed_data/` – Intermediate processed files prepared for alignment and model building
 - `pdb_kunitz_customreported.fasta`: Complete set of Kunitz domain sequences extracted from PDB entries.
