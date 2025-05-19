@@ -36,13 +36,7 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 
 - **ChimeraX**: Used to visualize and structurally superimpose predicted false positives and false negatives againstj the BPTI reference structure (PDB ID: 3TGI).
 
-### Python Scripts
-- `get_seq.py`: Extracts sequences from a FASTA file based on a list of UniProt IDs.
-- `performance.py`: Computes classification metrics such as MCC, precision, recall, and accuracy from `.class` files.
-- `confusion_matrix.py`, `ROC_curve.py`, `alignment_quality.py`: Generate evaluation plots for model performance and alignment quality.
-- `script.ipynb`: A comprehensive Jupyter notebook that documents the full pipeline step by step.
-
-### Python Dependencies
+### Python dependencies
 - `pandas`, `numpy`: For handling tabular data and numerical computations.
 - `matplotlib`, `seaborn`: For plotting results and visualizations.
 - `scikit-learn`: For computing classification performance metrics.
