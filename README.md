@@ -1,4 +1,5 @@
 # Building a Profile Hidden Markov Model for the Kunitz-type protease inhibitor domain
+
 ## Overview
 
 This project aims to build a structure-informed profile Hidden Markov Model (HMM) able to identify Kunitz-tyoe protease inhibitor domains. The Kunitz domain is a highly conserved motif involved in the inhibition of serine proteases, found across diverse species and protein architectures.
@@ -16,6 +17,7 @@ The pipeline includes:
 All scripts, data files, output tables, figures, and the final report are available in this repository.
 
 > This work was developed as part of the Laboratory of Bioinformatics 1 course during the MSc in Bioinformatics at the University of Bologna.
+
 
 ## Required Tools & Packages
 
@@ -42,6 +44,7 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 - `scikit-learn`: For computing classification performance metrics.
 
 > Ensure all dependencies are installed before running the analysis.
+
 
 ## Repository Structure
 
