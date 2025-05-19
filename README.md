@@ -1,10 +1,21 @@
-# LAB1_Kunitz_project
+# Building a Profile Hidden Markov Model for the Kunitz-type protease inhibitor domain
 ## Overview
-This project aims to identify Kunitz-type protease inhibitor domains by building a structure-informed profile Hidden Markov Model (HMM). The Kunitz domain is a highly conserved structural motif involved in the inhibition of serine proteases, and it appears across diverse species and protein architectures. By leveraging structural information from experimentally resolved proteins, the model is designed to capture key functional and conserved features of this domain.\
-The objective of this study was to build a profile HMM trained on experimentally resolved structures of proteins annotated with the PF00014 domain. The alignment was derived from multiple structure superposition, aiming to preserve key functional and structural features (e.g., disulfide bridges). After training the model with HMMER, we tested it against curated positive and negative sets from UniProt/SwissProt. Final evaluation was performed using Matthews Correlation Coefficient (MCC), accuracy, precision, recall, and ROC analysis.\
-Misclassifications were further investigated through structural alignment using ChimeraX.
 
-The work was carried out as part of the Laboratory of Bioinformatics 1 course during the MSc in Bioinformatics at the University of Bologna.
+This project aims to build a structure-informed profile Hidden Markov Model (HMM) able to identify Kunitz-tyoe protease inhibitor domains. The Kunitz domain is a highly conserved motif involved in the inhibition of serine proteases, found across diverse species and protein architectures.
+
+By leveraging structural information from experimentally resolved proteins, the model is designed to capture key conserved features of this domain.
+
+The pipeline includes:
+- Selection and clustering of PDB structures annotated with PF00014
+- Structural alignment using PDBeFold to generate a structure-based MSA
+- HMM training using HMMER
+- Evaluation on curated positive and negative UniProt/SwissProt datasets
+- Performance metrics: MCC, accuracy, precision, recall, and ROC analysis
+- Structural validation of misclassified sequences using ChimeraX and AlphaFold models
+
+All scripts, data files, output tables, figures, and the final report are available in this repository.
+
+> This work was developed as part of the Laboratory of Bioinformatics 1 course during the MSc in Bioinformatics at the University of Bologna.
 
 ## Required Tools & Packages
 
