@@ -81,6 +81,9 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 ### `results/figures/superimpositions/`
 - `Superimposition_fn.png`, `Superimposition_fp.png`: Structural alignment of selected false negatives and false positives against the reference BPTI domain, used to visually assess similarity despite classification errors.
 
+### `results/figures/logo/`
+- `logo_alignment-png`, `sequence_logo.png`: Sequence logos showing residue conservation across the aligned Kunitz domains.
+
 ### `results/figures/`
 - `ROC_curve.png`: Receiver Operating Characteristic (ROC) curve.
 - `alignment_quality.png`: Quality plot of structural alignment (RMSD, residue coverage).
