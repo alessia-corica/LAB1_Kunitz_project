@@ -1,8 +1,8 @@
 # LAB1_Kunitz_project
 ## Overview
-This project aims to build and evaluate profile Hidden Markov Models (HMMs) to identify the Kunitz-type protease inhibitor domain in protein sequences (Pfam ID: PF00014). The Kunitz domain is a small, structurally conserved domain involved in protease inhibition and found in a wide range of proteins.\
-The model is based on a structure-derived multiple alignment of representative domains from the Protein Data Bank (PDB), aligned using PDBeFold and trained with HMMER.\
-Model performance was assessed through 5-fold cross-validation on curated positive and negative datasets, demonstrating excellent predictive accuracy.
+This project aims to identify Kunitz-type protease inhibitor domains by building a structure-informed profile Hidden Markov Model (HMM). The Kunitz domain is a highly conserved structural motif involved in the inhibition of serine proteases, and it appears across diverse species and protein architectures. By leveraging structural information from experimentally resolved proteins, the model is designed to capture key functional and conserved features of this domain.\
+The objective of this study was to build a profile HMM trained on experimentally resolved structures of proteins annotated with the PF00014 domain. The alignment was derived from multiple structure superposition, aiming to preserve key functional and structural features (e.g., disulfide bridges). After training the model with HMMER, we tested it against curated positive and negative sets from UniProt/SwissProt. Final evaluation was performed using Matthews Correlation Coefficient (MCC), accuracy, precision, recall, and ROC analysis.\
+Misclassifications were further investigated through structural alignment using ChimeraX.
 
 The work was carried out as part of the Laboratory of Bioinformatics 1 course during the MSc in Bioinformatics at the University of Bologna.
 
