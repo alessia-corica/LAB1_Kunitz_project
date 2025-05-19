@@ -45,6 +45,9 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 
 ## Repository Structure
 
+### `final_report/` 
+- PDF containing the final report
+
 ### `hmm_model/` – Files used for building and storing the HMM profile
 - `pdb_kunitz_rp.ali`: Structural alignment of Kunitz domains obtained with PDBeFold.
 - `pdb_kunitz_rp_formatted.ali`: Alignment file reformatted for compatibility with HMMER's `hmmbuild`.
