@@ -101,7 +101,7 @@ The pipeline was built using a combination of command-line tools and custom Pyth
 - `mcc_thresholds_.png`: Plot of MCC values across E-value thresholds.
 
 
-### `scripts/` – All scripts used in the pipeline
+### `scripts/`
 - `script.ipynb`: Main notebook with the full workflow and explanation.
 - `get_seq.py`: Extracts sequences from a FASTA based on a list of UniProt IDs.
 - `performance.py`: Computes MCC, accuracy, precision, recall from `.class` files.
