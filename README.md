@@ -8,15 +8,22 @@ The work was carried out as part of the Laboratory of Bioinformatics 1 course du
 
 ## Required Tools & Packages
 
-To reproduce this project, the following software and dependencies are required.
+The pipeline was built using a combination of command-line tools and custom Python scripts:
 
 ### System tools
+- **HMMER 3.3.2**: Used for building the HMM profile.
+  - `hmmbuild`: to train the HMM from a multiple sequence alignment.
+  - `hmmsearch`: to query protein sequences against the HMM.
+  - `--max` and `-Z 1000`: options used to increase sensitivity and normalize scores.
+- **PDBeFold**: Used to perform multiple structure alignment of PDB chains containing the Kunitz domain.
 
-The following command-line tools are required to run the pipeline:
+- **CD-HIT**: Used to cluster sequences at ≥90% identity and remove redundancy from the dataset.
 
-- `cd-hit`: for clustering redundant sequences
-- `BLAST+`: for sequence similarity searches (`makeblastdb`, `blastp`)
-- `HMMER`: for HMM construction and scanning (`hmmbuild`, `hmmsearch`)
+- **BLAST**: Used to filter out sequences highly similar to the training set (`blastp`, `makeblastdb`).
+
+- **WebLogo / Skylign**: Tools for generating sequence logos from the aligned sequences.
+
+- **ChimeraX**: Used to visualize and structurally superimpose predicted false positives and false negatives againstj the BPTI reference structure (PDB ID: 3TGI).
 
 ### Python 3 packages
 
